@@ -41,8 +41,9 @@ namespace WebApi.Controllers
         //     return Ok(new Response<List<PlayerSelection>>(DisplayData)); ;
         // }
 
-         [HttpPost]
-        public async Task<bool> PostPlayer([FromBody] PlayerSelections selections)
+
+        [HttpPut]
+        public async Task<ActionResult<IEnumerable<PlayerSelections>>> PostPlayer([FromBody] PlayerSelections selections)
 
         {
             var PlayerCount = _context.PlayerSelection.Where(p => p.TeamName == selections.TeamName).CountAsync().Result;
@@ -63,15 +64,15 @@ namespace WebApi.Controllers
                 catch (DbUpdateException)
                 {
 
-                    return false;
+                    return BadRequest("Unsuccessful");
                 }
             }
             else
             {
-                return false;
+                return BadRequest("Unsuccessful");
             }
 
-            return true;
+            return Ok();
         }
 
 
