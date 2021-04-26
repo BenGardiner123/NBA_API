@@ -12,7 +12,7 @@ namespace WebApi.Models
         public string FIRSTNAME { get; set; }
 
         [JsonProperty("LASTNAME")]
-        public string LASTNAME{ get; set; }
+        public string LASTNAME { get; set; }
 
         [JsonProperty("AGE")]
         public int AGE { get; set; }

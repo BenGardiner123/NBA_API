@@ -5,11 +5,12 @@ namespace WebApi.Models
 {
     public class PlayerSelections
     {
-       
         public string TeamName { get; set; }
-        public int[] PlayerKeys{get;set;}
-         public PlayerSelections()
+        public int[] PlayerKeys { get; set; }
+
+        public PlayerSelections()
         {
+
         }
 
         public PlayerSelections(string teamName, int[] playerKeys)
@@ -18,7 +19,5 @@ namespace WebApi.Models
             PlayerKeys = playerKeys;
         }
 
-
-       
     }
 }

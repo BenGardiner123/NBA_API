@@ -70,11 +70,11 @@ namespace WebApi.Controllers
         {
             // var validFilter = new FullTeamRosterRequest(teamReq.PageNumber, teamReq.PageSize, teamReq.SortString, teamReq.TeamName);
             var userInput = teamReq.TeamName;
-            var usortcol=teamReq.SortString;
-            var uSortType=teamReq.SortType;
+            var usortcol = teamReq.SortString;
+            var uSortType = teamReq.SortType;
             var pagedData = await _context.allPlayers
-                .FromSqlRaw("getPlayersFromTeam @p0,@p1,@p2", userInput,usortcol,uSortType)
-         
+                .FromSqlRaw("getPlayersFromTeam @p0,@p1,@p2", userInput, usortcol, uSortType)
+
             .ToListAsync();
             return Ok(new Response<List<Player>>(pagedData));
         }
@@ -89,8 +89,8 @@ namespace WebApi.Controllers
             var validFilter = new SearchPaginationFilter(filter.searchstring, filter.PageNumber, filter.PageSize, filter.SortString, filter.SortOrder);
 
             string[]? splitString = filter.searchstring?.Split(' ');
-            var pagedData=new List<Player>();
-            decimal pagescount=0;
+            var pagedData = new List<Player>();
+            decimal pagescount = 0;
 
 
             if (splitString?.Length == 2)
@@ -150,10 +150,10 @@ namespace WebApi.Controllers
                     pagesCount += 1;
                 }
                 if (filter.SortOrder == "ASC")
-               
+
                 {
-                     pagedData=pageData;
-                     pagescount=pagesCount;
+                    pagedData = pageData;
+                    pagescount = pagesCount;
                     return Ok(new Response<List<Player>>(pageData, Decimal.ToInt32(pagesCount)));
 
                 }
@@ -165,11 +165,11 @@ namespace WebApi.Controllers
                     .Skip((validFilter.PageNumber - 1) * validFilter.PageSize)
                     .Take(validFilter.PageSize)
                     .ToListAsync();
-                     return Ok(new Response<List<Player>>(pageData, Decimal.ToInt32(pagesCount)));
+                    return Ok(new Response<List<Player>>(pageData, Decimal.ToInt32(pagesCount)));
                 }
-               
+
             }
-             return Ok(new Response<List<Player>>(pagedData, Decimal.ToInt32(pagescount)));
+            return Ok(new Response<List<Player>>(pagedData, Decimal.ToInt32(pagescount)));
         }
         //Get Column Headers
         [HttpGet("headers")]

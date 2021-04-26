@@ -29,18 +29,6 @@ namespace WebApi.Controllers
             return await _context.PlayerSelection.ToListAsync();
         }
 
-        // GET: api/PlayerSelection/5
-        // display players from searching team name
-        // [HttpGet("ViewPlayers")]
-        // public async Task<ActionResult<PlayerSelection>> GetPlayerSelection([FromQuery] string searchstring)
-        // {
-        //     var DisplayData = await _context.PlayerSelection.Where(p => EF.Functions.Like(p.TeamName, $"{searchstring}%"))
-        //            .OrderBy(p => p.TeamName)
-        //            .ToListAsync();
-
-        //     return Ok(new Response<List<PlayerSelection>>(DisplayData)); ;
-        // }
-
 
         [HttpPut]
         public async Task<ActionResult<IEnumerable<PlayerSelections>>> PostPlayer([FromBody] PlayerSelections selections)
@@ -54,7 +42,7 @@ namespace WebApi.Controllers
                 {
                     foreach (int i in selections.PlayerKeys)
                     {
-                      var selection=new PlayerSelection(selections.TeamName,i);
+                        var selection = new PlayerSelection(selections.TeamName, i);
                         _context.PlayerSelection.Add(selection);
 
                         await _context.SaveChangesAsync();
@@ -74,6 +62,19 @@ namespace WebApi.Controllers
 
             return Ok();
         }
+
+
+        // GET: api/PlayerSelection/5
+        // display players from searching team name
+        // [HttpGet("ViewPlayers")]
+        // public async Task<ActionResult<PlayerSelection>> GetPlayerSelection([FromQuery] string searchstring)
+        // {
+        //     var DisplayData = await _context.PlayerSelection.Where(p => EF.Functions.Like(p.TeamName, $"{searchstring}%"))
+        //            .OrderBy(p => p.TeamName)
+        //            .ToListAsync();
+
+        //     return Ok(new Response<List<PlayerSelection>>(DisplayData)); ;
+        // }
 
 
         // DELETE: api/PlayerSelection/DeletePlayer

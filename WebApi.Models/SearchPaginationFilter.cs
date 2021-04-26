@@ -2,8 +2,8 @@
 
 namespace WebApi.Models
 {
-	public class SearchPaginationFilter
-	{
+    public class SearchPaginationFilter
+    {
         public int PageNumber { get; set; }
         public int PageSize { get; set; }
         public string searchstring { get; set; }
@@ -15,17 +15,17 @@ namespace WebApi.Models
             this.PageNumber = 1;
             this.PageSize = 10;
             this.searchstring = "";
-             this.SortString="FIRSTNAME";
-            this.SortOrder="ASC";
+            this.SortString = "FIRSTNAME";
+            this.SortOrder = "ASC";
         }
 
-        public SearchPaginationFilter(string searchstring, int pageNumber, int pageSize, string sortString,string sortOrder)
+        public SearchPaginationFilter(string searchstring, int pageNumber, int pageSize, string sortString, string sortOrder)
         {
             this.PageNumber = pageNumber < 1 ? 1 : pageNumber;
             this.PageSize = pageSize > 30 ? 30 : pageSize;
             this.searchstring = searchstring;
             SortString = sortString;
-            SortOrder=sortOrder;
+            SortOrder = sortOrder;
         }
     }
 }

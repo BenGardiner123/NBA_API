@@ -10,6 +10,7 @@ namespace WebApi.Models
         public bool Succeeded { get; set; }
         public string Message { get; set; }
         public int Pages { get; set; }
+
         public Response()
         {
 
@@ -20,7 +21,7 @@ namespace WebApi.Models
             Data = data;
         }
 
-        public Response(T data , int pagesCount)
+        public Response(T data, int pagesCount)
         {
             Data = data;
             Succeeded = true;

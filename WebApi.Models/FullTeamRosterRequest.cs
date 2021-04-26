@@ -5,8 +5,13 @@ namespace WebApi.Models
 {
     public class FullTeamRosterRequest
     {
+        public string TeamName { get; set; }
+        public string SortString { get; set; }
+        public string SortType { get; set; }
+
         public FullTeamRosterRequest()
         {
+
         }
 
         public FullTeamRosterRequest(string teamName, string sortString, string sortType)
@@ -15,13 +20,6 @@ namespace WebApi.Models
             SortString = "FIRSTNAME";
             SortType = "DESC";
         }
-
-        public string TeamName { get; set; }
-        public string SortString { get; set; }
-        public string SortType { get; set; }
-
-      
-
 
     }
 }
