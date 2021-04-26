@@ -8,7 +8,7 @@ FROM INFORMATION_SCHEMA.TABLES
 GO
 
 select * 
-from Player
+from Team
 select *
 from allPlayers
 
