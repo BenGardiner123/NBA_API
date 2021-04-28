@@ -66,7 +66,7 @@ namespace WebApi.Controllers
         // GET: api/Player
         [Route("getPlayersFromTeam")]
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Player>>> getPlayersFromTeam([FromBody] FullTeamRosterRequest teamReq)
+        public async Task<ActionResult<IEnumerable<Player>>> getPlayersFromTeam([FromQuery] FullTeamRosterRequest teamReq)
         {
             // var validFilter = new FullTeamRosterRequest(teamReq.PageNumber, teamReq.PageSize, teamReq.SortString, teamReq.TeamName);
             var userInput = teamReq.TeamName;
