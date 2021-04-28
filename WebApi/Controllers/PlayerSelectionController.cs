@@ -35,6 +35,15 @@ namespace WebApi.Controllers
 
         {
             var PlayerCount = _context.PlayerSelection.Where(p => p.TeamName == selections.TeamName).CountAsync().Result;
+            var players = _context.PlayerSelection.Where(p => p.TeamName == selections.TeamName).ToList();
+
+            foreach (var player in players)
+            {
+                
+                _context.PlayerSelection.Remove(player);
+
+                await _context.SaveChangesAsync();
+            }
 
             if (PlayerCount < 15)
             {
