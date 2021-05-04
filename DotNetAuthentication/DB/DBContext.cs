@@ -12,6 +12,7 @@ namespace DotNetAuthentication.DB
 
         //entities
         public DbSet<User> Users { get; set; }
+
         public DbSet<Player> allPlayers { get; set; }
 
         public DbSet<Team> Team { get; set; }
@@ -35,12 +36,15 @@ namespace DotNetAuthentication.DB
             });
             modelBuilder.Entity<Team>().HasKey(t => new
             {
-                t.TeamName
+                t.TeamName,
+                t.UserID
+          
             });
 
             modelBuilder.Entity<PlayerSelection>().HasKey(p => new
             {
                 p.TeamName,
+                p.UserID,
                 p.Player_key
             });
 
